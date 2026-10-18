@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Neelam Preethi, Master's in Data Science student at Teesside University.">
+  <title>Neelam Preethi | Data Science Portfolio</title>
+  <style>
+    :root {
+      --navy: #102a56;
+      --blue: #2864d7;
+      --sky: #eaf2ff;
+      --ink: #17243a;
+      --muted: #64748b;
+      --paper: #ffffff;
+      --line: #dbe5f4;
+      --surface: #f6f9ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(219,229,244,.9);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.03em; color: var(--navy); text-decoration: none; }
+    .brand span { color: var(--blue); }
+    nav { display: flex; flex-wrap: wrap; gap: 22px; }
+    nav a { text-decoration: none; color: #45546d; font-size: .93rem; font-weight: 600; }
+    nav a:hover { color: var(--blue); }
+    .hero {
+      position: relative; overflow: hidden;
+      background: radial-gradient(circle at 85% 10%, #d9e8ff 0, transparent 28%),
+                  linear-gradient(135deg, #f5f8ff, #ffffff 62%);
+      padding: 88px 0 82px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.45fr .75fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--blue); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; }
+    h1 { margin: 12px 0 14px; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.04; letter-spacing: -.055em; color: var(--navy); }
+    .hero h2 { margin: 0 0 20px; font-size: clamp(1.15rem, 2.3vw, 1.55rem); font-weight: 650; color: #425573; }
+    .intro { max-width: 650px; color: #4d5d75; font-size: 1.08rem; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; padding: 12px 19px; border-radius: 12px; font-weight: 750; text-decoration: none; border: 1px solid var(--blue); transition: transform .18s, box-shadow .18s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px #173e801c; }
+    .btn.primary { background: var(--blue); color: white; }
+    .btn.secondary { background: white; color: var(--navy); border-color: var(--line); }
+    .hero-card { background: white; border: 1px solid var(--line); border-radius: 24px; padding: 28px; box-shadow: 0 22px 55px #15386d12; }
+    .avatar { width: 66px; height: 66px; display: grid; place-items: center; border-radius: 20px; background: var(--sky); color: var(--blue); font-size: 1.55rem; font-weight: 850; }
+    .hero-card h3 { color: var(--navy); margin: 18px 0 6px; font-size: 1.3rem; }
+    .hero-card p { color: var(--muted); margin: 0; }
+    .mini-list { list-style: none; padding: 18px 0 0; margin: 18px 0 0; border-top: 1px solid var(--line); }
+    .mini-list li { padding: 7px 0; color: #3c4d67; }
+    .mini-list li::before { content: "✓"; color: var(--blue); font-weight: 900; margin-right: 10px; }
+    section { padding: 76px 0; }
+    section.alt { background: var(--surface); }
+    .section-head { margin-bottom: 30px; }
+    .section-head .eyebrow { margin-bottom: 8px; }
+    h2.section-title { margin: 0; color: var(--navy); font-size: clamp(1.9rem, 4vw, 2.6rem); letter-spacing: -.04em; line-height: 1.2; }
+    .section-desc { max-width: 700px; color: var(--muted); margin: 12px 0 0; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 25px; }
+    .card h3 { color: var(--navy); margin: 0 0 8px; font-size: 1.18rem; }
+    .card p { color: #53627a; margin: 0; }
+    .meta { color: var(--blue); font-weight: 750; font-size: .91rem; margin-bottom: 9px; }
+    .skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .skill { background: white; border: 1px solid var(--line); border-radius: 15px; padding: 18px; }
+    .skill strong { display: block; color: var(--navy); margin-bottom: 4px; }
+    .skill span { font-size: .91rem; color: var(--muted); }
+    .project { position: relative; overflow: hidden; }
+    .project-label { display: inline-block; margin-bottom: 12px; background: var(--sky); color: var(--blue); padding: 5px 10px; border-radius: 999px; font-size: .8rem; font-weight: 800; }
+    .note { border-left: 3px solid #a8c6ff; padding: 12px 16px; color: var(--muted); background: #f7faff; border-radius: 0 10px 10px 0; font-size: .92rem; margin-top: 18px; }
+    .interest-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .pill { border: 1px solid #cddcf3; color: var(--navy); background: white; border-radius: 999px; padding: 9px 14px; font-weight: 650; }
+    .contact-panel { background: var(--navy); color: white; border-radius: 24px; padding: clamp(28px, 5vw, 48px); display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .contact-panel h2 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.04em; }
+    .contact-panel p { color: #d6e2f7; margin: 0; }
+    .contact-panel .btn { flex-shrink: 0; background: white; color: var(--navy); border-color: white; }
+    footer { padding: 26px 0; color: var(--muted); font-size: .9rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    :focus-visible { outline: 3px solid #8bb5ff; outline-offset: 3px; }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; padding: 17px 0; flex-direction: column; }
+      nav { gap: 12px 17px; }
+      .hero { padding: 58px 0; }
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .hero-grid { gap: 28px; }
+      section { padding: 58px 0; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: min(100% - 28px, 1100px); }
+      .skill-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .skill { padding: 14px; }
+      .hero-card, .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home">Neelam <span>Preethi</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Data Science · Internship & Placement</div>
+          <h1>Neelam<br>Preethi</h1>
+          <h2>Master’s in Data Science student</h2>
+          <p class="intro">I’m studying Data Science at Teesside University and bring a Computer Science Engineering background, programming skills, and freelancing experience. I’m looking for an internship or placement opportunity to apply my knowledge and continue learning.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:neelampreethi9@gmail.com">Contact me</a>
+            <a class="btn secondary" href="#projects">Explore my project</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Portfolio summary">
+          <div class="avatar" aria-hidden="true">NP</div>
+          <h3>Portfolio snapshot</h3>
+          <p>Student · Aspiring Data Science professional</p>
+          <ul class="mini-list">
+            <li>Teesside University</li>
+            <li>Expected graduation: 2028</li>
+            <li>Python, Java and C++</li>
+            <li>Machine learning project</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2 class="section-title">Professional profile</h2>
+        </div>
+        <p class="section-desc">I am a Master’s in Data Science student at Teesside University, expected to graduate in 2028, with an educational background in Computer Science Engineering. I have programming skills in Python, Java, and C++, along with good communication skills. My project experience includes a machine learning project titled <em>Telcho Customer Churn</em>, and I have freelancing experience with Final Edge.</p>
+      </div>
+    </section>
+
+    <section class="alt" id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Learning journey</div>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="two-col">
+          <article class="card">
+            <div class="meta">Expected graduation · 2028</div>
+            <h3>Master’s in Data Science</h3>
+            <p>Teesside University</p>
+          </article>
+          <article class="card">
+            <div class="meta">Previous education</div>
+            <h3>Computer Science Engineering</h3>
+            <p>Institution and completion year have not been provided.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What I bring</div>
+          <h2 class="section-title">Skills</h2>
+          <p class="section-desc">A growing technical foundation paired with communication skills.</p>
+        </div>
+        <div class="skill-grid">
+          <div class="skill"><strong>Python</strong><span>Programming</span></div>
+          <div class="skill"><strong>Java</strong><span>Programming</span></div>
+          <div class="skill"><strong>C++</strong><span>Programming</span></div>
+          <div class="skill"><strong>Communication</strong><span>Good communication skills</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Selected work</div>
+          <h2 class="section-title">Project</h2>
+        </div>
+        <article class="card project">
+          <span class="project-label">Machine Learning</span>
+          <h3>Telcho Customer Churn</h3>
+          <p>A machine learning project listed in my portfolio.</p>
+          <div class="note">Project objectives, dataset, techniques, tools, implementation details, and results have not yet been provided.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Practical experience</div>
+          <h2 class="section-title">Freelancing</h2>
+        </div>
+        <article class="card">
+          <div class="meta">Freelancing</div>
+          <h3>Final Edge</h3>
+          <p>I have freelancing experience with Final Edge.</p>
+          <div class="note">Specific responsibilities, projects, contributions, and duration have not been provided.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="alt" id="interests">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Areas of interest</div>
+          <h2 class="section-title">What I’m interested in</h2>
+        </div>
+        <div class="interest-list">
+          <span class="pill">Data Science</span>
+          <span class="pill">Machine Learning</span>
+          <span class="pill">Programming</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <h2>Let’s connect</h2>
+            <p>I’m seeking internship or placement opportunities in Data Science or a related technical field.</p>
+            <p style="margin-top:10px"><strong>neelampreethi9@gmail.com</strong></p>
+          </div>
+          <a class="btn" href="mailto:neelampreethi9@gmail.com">Email Neelam</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year">2026</span> Neelam Preethi</span>
+      <span>Personal portfolio · Built with HTML and CSS</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
